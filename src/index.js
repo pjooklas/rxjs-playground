@@ -8,12 +8,9 @@ var someObservable$ = new rxjs_1.Observable(function (subscriber) {
     setTimeout(function () { return subscriber.next('Charlie'); }, 4000);
     // subscriber.complete();
 });
-// const observer = {
-//   next: value => console.log('value', value)
-// }
-// someObservable$.subscribe(observer)
-var subscription = someObservable$.subscribe(function (value) { return console.log(value); });
+console.log('Subscription 1 starts');
+var subscription = someObservable$.subscribe(function (value) { return console.log('Subscription 1:', value); });
 setTimeout(function () {
-    console.log('unsubscirbe');
-    subscription.unsubscribe();
-}, 3000);
+    console.log('Subscription 2 starts');
+    var subscription = someObservable$.subscribe(function (value) { return console.log('Subscription 2:', value); });
+}, 1000);

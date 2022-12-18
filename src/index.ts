@@ -9,15 +9,11 @@ const someObservable$ = new Observable<string>(subscriber => {
   // subscriber.complete();
 });
 
-// const observer = {
-//   next: value => console.log('value', value)
-// }
-
-// someObservable$.subscribe(observer)
-const subscription = someObservable$.subscribe(value => console.log(value));
+console.log('Subscription 1 starts');
+const subscription = someObservable$.subscribe(value => console.log('Subscription 1:',value));
 
 setTimeout(() => {
-  console.log('unsubscirbe');
-
-  subscription.unsubscribe()}, 3000);
+  console.log('Subscription 2 starts');
+  const subscription = someObservable$.subscribe(value => console.log('Subscription 2:',value));
+}, 1000);
  
